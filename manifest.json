@@ -1,29 +1,14 @@
 {
   "version": 1,
   "locale": "en_US",
-  "platform": "3.6.3",
   "metadata": {
     "appmode": "shiny",
     "primary_rmd": null,
     "primary_html": null,
-    "content_category": "application",
-    "has_parameters": false
+    "content_category": "application"
   },
-  "packages": {
-    "R": [
-      "shiny",
-      "leaflet",
-      "dplyr",
-      "lubridate",
-      "DT",
-      "htmltools",
-      "jsonlite"
-    ]
-  },
+  "packages": null,
   "files": {
-    "app.R": {
-      "checksum": "?"
-    }
-  },
-  "users": null
+    "app.R": {}
+  }
 }
