@@ -3,22 +3,12 @@
   "locale": "en_US",
   "platform": "3.6.3",
   "metadata": {
-    "appmode": "shiny",
-    "primary_rmd": null,
-    "primary_html": null,
-    "content_category": "application"
+    "appmode": "shiny"
   },
   "packages": {
-    "R": [
-      "shiny",
-      "ggplot2",
-      "dplyr"
-    ]
+    "R": ["shiny"]
   },
   "files": {
-    "app.R": {
-      "checksum": "?"
-    }
-  },
-  "users": null
+    "app.R": {}
+  }
 }
