@@ -1,12 +1,20 @@
 {
   "version": 1,
   "locale": "en_US",
+  "platform": "3.6.3",
   "metadata": {
     "appmode": "shiny",
     "primary_rmd": null,
-    "primary_html": null
+    "primary_html": null,
+    "content_category": "application"
   },
-  "packages": null,
+  "packages": {
+    "R": [
+      "shiny",
+      "ggplot2",
+      "dplyr"
+    ]
+  },
   "files": {
     "app.R": {
       "checksum": "?"
