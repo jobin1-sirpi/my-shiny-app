@@ -1,35 +1,14 @@
 {
   "version": 1,
   "locale": "en_US",
-  "platform": "3.5.0",
   "metadata": {
     "appmode": "shiny",
     "primary_rmd": null,
-    "primary_html": null,
-    "content_category": "application",
-    "has_parameters": false
+    "primary_html": null
   },
-  "packages": {
-    "R": [
-      "shiny",
-      "ggplot2",
-      "dplyr"
-    ]
-  },
+  "packages": null,
   "files": {
     "app.R": {
-      "checksum": "?"
-    },
-    "global.R": {
-      "checksum": "?"
-    },
-    "R/helpers.R": {
-      "checksum": "?"
-    },
-    "www/styles.css": {
-      "checksum": "?"
-    },
-    "data/sample_data.csv": {
       "checksum": "?"
     }
   },
