@@ -1,4 +1,4 @@
-# app.R - Main application file for Shiny app deployment
+# app.R - Simplified Shiny app compatible with R 3.6.3
 
 # Load required packages
 library(shiny)
@@ -33,7 +33,8 @@ generate_sample_data <- function(months = 24) {
     date = month_seq,
     sales = round(sales, 2),
     profit = round(profit, 2),
-    customers = round(customers, 0)
+    customers = round(customers, 0),
+    stringsAsFactors = FALSE  # Explicit for R 3.6.3 compatibility
   )
 }
 
@@ -58,13 +59,7 @@ ui <- fluidPage(
                   choices = c("Bar" = "bar",
                              "Line" = "line",
                              "Point" = "point"),
-                  selected = "bar"),
-      
-      sliderInput("bins",
-                 "Number of bins:",
-                 min = 5,
-                 max = 50,
-                 value = 20)
+                  selected = "bar")
     ),
     
     # Main panel for displaying outputs
@@ -91,29 +86,41 @@ server <- function(input, output) {
     # Get the data
     df <- data()
     
+    # For R 3.6.3 compatibility, not using aes_string
+    if (input$variable == "sales") {
+      y_val <- df$sales
+      y_lab <- "Sales"
+    } else if (input$variable == "profit") {
+      y_val <- df$profit
+      y_lab <- "Profit"
+    } else {
+      y_val <- df$customers
+      y_lab <- "Customers"
+    }
+    
     # Create plot based on type selected
     if (input$plotType == "bar") {
-      ggplot(df, aes_string(x = "month", y = input$variable)) +
+      ggplot(df, aes(x = month, y = y_val)) +
         geom_bar(stat = "identity", fill = "steelblue") +
         theme_minimal() +
         theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-        labs(title = paste(input$variable, "by Month"),
-             x = "Month", y = input$variable)
+        labs(title = paste(y_lab, "by Month"),
+             x = "Month", y = y_lab)
     } else if (input$plotType == "line") {
-      ggplot(df, aes_string(x = "month", y = input$variable, group = 1)) +
+      ggplot(df, aes(x = month, y = y_val, group = 1)) +
         geom_line(color = "steelblue", size = 1) +
         geom_point(color = "steelblue", size = 3) +
         theme_minimal() +
         theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-        labs(title = paste(input$variable, "by Month"),
-             x = "Month", y = input$variable)
+        labs(title = paste(y_lab, "by Month"),
+             x = "Month", y = y_lab)
     } else {
-      ggplot(df, aes_string(x = "month", y = input$variable)) +
+      ggplot(df, aes(x = month, y = y_val)) +
         geom_point(color = "steelblue", size = 3) +
         theme_minimal() +
         theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-        labs(title = paste(input$variable, "by Month"),
-             x = "Month", y = input$variable)
+        labs(title = paste(y_lab, "by Month"),
+             x = "Month", y = y_lab)
     }
   })
   
