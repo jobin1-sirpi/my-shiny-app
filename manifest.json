@@ -1,14 +1,26 @@
 {
   "version": 1,
+  "bundle": {
+    "type": "shiny",
+    "app_mode": 1
+  },
   "locale": "en_US",
-  "platform": "4.2.3",
+  "platform": {
+    "image": "rstudio/connect:bionic-2024.03.1",
+    "r": "4.2.3",
+    "python": null
+  },
   "metadata": {
     "appmode": "shiny",
     "primary_rmd": null,
     "primary_html": null,
     "content_category": "application"
   },
-  "packages": null,
+  "packages": {
+    "R": [
+      "shiny"
+    ]
+  },
   "files": {
     "app.R": {}
   }
