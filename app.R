@@ -1,5 +1,6 @@
 # Simple Shiny app compatible with Posit Connect Cloud
 library(shiny)
+library(boot)
 
 # Define UI
 ui <- fluidPage(
